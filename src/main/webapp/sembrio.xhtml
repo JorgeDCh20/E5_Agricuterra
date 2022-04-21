@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="content">
+
+		<h2>Registro de sembrios</h2>
+		<h:form>
+
+			<h:outputLabel value="Id:" for="id" styleClass="control-label" />
+			<p:inputText id="id" styleClass="form-control"
+				value="#{sembrioController.s.idSembrio}"></p:inputText>
+
+
+
+			<h:outputLabel value="Nombre de Sembrio: " for="NSembrio"
+				styleClass="control-label" />
+			<br />
+			<p:inputText id="NSembrio" styleClass="form-control"
+				value="#{sembrioController.s.NSembrio}"></p:inputText>
+
+
+			<br />
+			<h:outputLabel value="Temperatura Ideal:" for="QTIdeal"
+				styleClass="control-label" />
+			<p:inputText id="QTIdeal" styleClass="form-control"
+				value="#{sembrioController.s.QTIdeal}"></p:inputText>
+
+
+			<h:outputLabel value="pH Ideal:" for="QPhIdeal"
+				styleClass="control-label" />
+			<p:inputText id="QPhIdeal" styleClass="form-control"
+				value="#{sembrioController.s.QPhIdeal}"></p:inputText>
+
+
+			<h:outputLabel value="Humedad Ideal:" for="QHumedadI"
+				styleClass="control-label" />
+			<p:inputText id="QHumedadI" styleClass="form-control"
+				value="#{sembrioController.s.QHumedadI}" aria-label=""></p:inputText>
+
+
+			<p:commandButton value="Grabar"
+				actionListener="#{sembrioController.insert()}"
+				action="listSembrio?faces-redirect=true" update="@form"></p:commandButton>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
