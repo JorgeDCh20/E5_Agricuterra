@@ -7,14 +7,10 @@
 		transaction-type="JTA">
 		<jta-data-source>java:/agricuterraDS</jta-data-source>
 		<class>pe.edu.upc.entities.Usuario</class>
-		<class>pe.edu.upc.entities.Sembrio</class>
-		<class>pe.edu.upc.entities.TipoFactor</class>
-		<class>pe.edu.upc.entities.Tipo</class>
-		<class>pe.edu.upc.entities.Categoria</class>
 		<properties>
 			<property
 				name="javax.persistence.schema-generation.database.action"
-				value="update" />
+				value="create" />
 		</properties>
 	</persistence-unit>
 </persistence>
