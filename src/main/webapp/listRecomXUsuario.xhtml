@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+	<ui:define name="content">
+		<h2>Lista de Recomendaciones X Usuario</h2>
+		<h:form>
+			<p:dataTable id="LstRecomXUsuario"
+				value="#{recomXUsuarioController.listaRecomXUsuario}" var="reus"
+				paginator="true" paginatorPosition="top"
+				rowsPerPageTemplate="5,10,15,20,25" rows="5"
+				emptyMessage="No hay recomendaciones con usuarios registrados"
+				rowIndexVar="item">
+
+				<p:column headerText="Recomendacion">
+					<h:outputText
+						value="#{reus.recomendacion.idRecomendacion}" />
+				</p:column>
+				
+				<p:column headerText="Usuario">
+					<h:outputText
+						value="#{reus.usuario.fullNameUsuario}" />
+				</p:column>
+				
+				<p:column headerText="Operación">
+				<h:commandLink action="#{recomXUsuarioController.preUpdate(reus)}"
+				value="Modificar" />
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

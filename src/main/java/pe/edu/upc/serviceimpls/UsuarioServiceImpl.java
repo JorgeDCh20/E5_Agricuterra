@@ -30,4 +30,10 @@ public class UsuarioServiceImpl implements IUsuarioService{
 		// TODO Auto-generated method stub
 		pDao.delete(id);
 	}
+
+	@Override
+	public List<Usuario> findByNameUsuario(Usuario u) {
+		// TODO Auto-generated method stub
+		return pDao.findByNameUsuario(u);
+	}
 }

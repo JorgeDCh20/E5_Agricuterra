@@ -62,6 +62,15 @@ public class UsuarioController {
 		} catch (Exception e) {
 			System.out.println("Prblemas en el controlador");		}
 	}
+	
+	public void findByNameUsuario() {
+		try {
+			listaUsuario = uService.findByNameUsuario(this.getU());
+		} catch (Exception e) {
+			System.out.println("Error al buscar el usuario en el controlador");
+		}
+	}
+	
 	// getters & setters
 
 	public IUsuarioService getuService() {

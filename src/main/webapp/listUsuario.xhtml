@@ -7,9 +7,24 @@
 
 <ui:composition template="/master.xhtml">
 	<ui:define name="content">
-	<br></br>
+		<br></br>
 		<h2>Lista Usuario</h2>
 		<h:form>
+			<div class="row">
+				<div class= "col-sm-4">
+				
+					<h:outputLabel value="Ingrese el nombre del usuario a buscar: "
+						for="name" styleClass="control-label" />
+
+					<p:inputText id="name"
+						value="#{usuarioController.u.fullNameUsuario}"
+						styleClass="form-control" />
+						<p:commandButton value="Buscar" update="lstUsuarios"
+						actionListener="#{usuarioController.findByNameUsuario()}"/>
+				</div>
+
+			</div>
+			
 			<p:dataTable id="lstUsuarios"
 				value="#{usuarioController.listaUsuario}" var="pe" paginator="true"
 				paginatorPosition="top" rowPerPageTemplate="5,10,15,20,25" rows="5"
@@ -27,9 +42,10 @@
 				<p:column headerText="Contraseña">
 					<h:outputText value="#{pe.passwordUsuario}" />
 				</p:column>
-				<p/>
+				<p />
 				<p:column headerText="Fecha de Nacimiento">
-					<h:outputText value="#{pe.birthDateUsuario}"> <p></p>
+					<h:outputText value="#{pe.birthDateUsuario}">
+						<p></p>
 						<f:convertDateTime pattern="dd-MM-yyyy" timezone="UTC" />
 					</h:outputText>
 				</p:column>

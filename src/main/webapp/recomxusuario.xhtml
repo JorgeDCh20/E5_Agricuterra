@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/master.xhtml">
+
+	<ui:define name="content">
+		<h2>Registro de Recomendacion X Usuario</h2>
+		<h:form>
+		
+			<h:outputLabel value="Codigo de Recomendacion" for="cboRecomendacion"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboRecomendacion"
+				value="#{recomXUsuarioController.ru.recomendacion}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{recomXUsuarioController.listaRecomendacion}"
+					var="r" itemLabel="#{r.idRecomendacion}" itemValue="#{r}" />
+			</p:selectOneMenu>
+			<br />
+			
+			<h:outputLabel value="Nombre del Usuario" for="cboUsuario"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboUsuario"
+				value="#{recomXUsuarioController.ru.usuario}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{recomXUsuarioController.listaUsuario}"
+					var="u" itemLabel="#{u.fullNameUsuario}" itemValue="#{u}" />
+			</p:selectOneMenu>
+			<br />
+			
+			<p:commandButton value="Grabar"
+				actionListener="#{recomXUsuarioController.insert()}"
+				action="recomxusuario?faces-redirect=true" update="@form"
+				styleClass="btn btn-primary"/>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

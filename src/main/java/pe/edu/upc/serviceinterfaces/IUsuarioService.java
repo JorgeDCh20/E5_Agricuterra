@@ -11,4 +11,6 @@ public interface IUsuarioService {
 	public List<Usuario> list();
 	
 	public void delete(int id);
+	
+	public List<Usuario> findByNameUsuario(Usuario u);
 }

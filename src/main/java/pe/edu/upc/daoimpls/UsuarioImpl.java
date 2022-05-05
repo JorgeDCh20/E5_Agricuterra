@@ -52,4 +52,18 @@ public class UsuarioImpl implements IUsuarioDao{
 
 		}
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Usuario> findByNameUsuario(Usuario u) {
+		List<Usuario> lista = new ArrayList<Usuario>();
+		try {
+			Query q=em.createQuery("from Usuario u where u.fullNameUsuario like ?1");
+					q.setParameter(1,"%" + u.getFullNameUsuario() + "%");
+			lista=(List<Usuario>)q.getResultList();
+		} catch (Exception e) {
+			System.out.println("Error al buscar el usuario en el daoimpl");
+		}
+		return lista;
+	}
 }
