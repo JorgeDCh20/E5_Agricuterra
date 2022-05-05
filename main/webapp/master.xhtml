@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
+</h:head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="#">AGRICUTERRA</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+			data-bs-target="#navbarScroll" aria-controls="navbarScroll"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarScroll">
+			<ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+				style="-bs-scroll-height: 100px;">
+				<li class="nav-item"><a class="nav-link active"
+					aria-current="page" href="panel.xhtml">Home</a></li>
+
+				<li class="nav-item"><a class="nav-link active"
+					href="usuario.xhtml">Registrar Usuario</a></li>
+
+				<li class="nav-item"><a class="nav-link active"
+					href="listUsuario.xhtml">Listar Usuario</a></li>
+
+				<li class="nav-item"><a class="nav-link active"
+					href="Categoria.xhtml">Registrar Categoria</a></li>
+
+				<li class="nav-item"><a class="nav-link active"
+					href="listCategoria.xhtml">Listar Categoria</a></li>
+
+				<li class="nav-item"><a class="nav-link active"
+					href="sembrio.xhtml">Registrar Sembrio</a></li>
+
+				<li class="nav-item"><a class="nav-link active"
+					href="listSembrio.xhtml">Listar Sembrio</a></li>
+
+				<li class="nav-item"><a class="nav-link active"
+					href="TipoFactor.xhtml">Registrar TFactor</a></li>
+
+				<li class="nav-item"><a class="nav-link active"
+					href="listTipoFactor.xhtml">Listar TFactor</a></li>
+
+				<li class="nav-item"><a class="nav-link active"
+					href="tipo.xhtml">Registrar TRecomendacion</a></li>
+
+				<li class="nav-item"><a class="nav-link active"
+					href="listTipo.xhtml">Listar TRecomendacion</a></li>
+					
+				<li class="nav-item"><a class="nav-link active"
+					href="Analisis.xhtml">Registrar Análisis</a></li>
+				
+				<li class="nav-item"><a class="nav-link active"
+				href="listAnalisis.xhtml">Listar Análisis</a></li>
+				
+				<li class="nav-item"><a class="nav-link active"
+					href="proyeccion.xhtml">Registrar Proyeccion</a></li>
+				
+				<li class="nav-item"><a class="nav-link active"
+				href="listProyeccion.xhtml">Listar Proyeccion</a></li>
+				
+				<li class="nav-item"><a class="nav-link active"
+					href="factor.xhtml">Registrar Factor</a></li>
+				
+				<li class="nav-item"><a class="nav-link active"
+				href="listFactor.xhtml">Listar Factor</a></li>
+				
+			</ul>
+		</div>
+	</div>
+	</nav>
+	<div class="container">
+		<ui:insert name="content"></ui:insert>
+
+	</div>
+	<div>
+		<ui:insert name="footerCont"></ui:insert>
+	</div>
+
+
+</body>
+</html>

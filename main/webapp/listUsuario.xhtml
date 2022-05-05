@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/master.xhtml">
+	<ui:define name="content">
+	<br></br>
+		<h2>Lista Usuario</h2>
+		<h:form>
+			<p:dataTable id="lstUsuarios"
+				value="#{usuarioController.listaUsuario}" var="pe" paginator="true"
+				paginatorPosition="top" rowPerPageTemplate="5,10,15,20,25" rows="5"
+				rowIndexVar="item" emptyMessage="No existen Usuarioas">
+
+
+				<p:column headerText="Id">
+					<h:outputText value="#{pe.idUsuario}" />
+				</p:column>
+
+				<p:column headerText="Usuario">
+					<h:outputText value="#{pe.fullNameUsuario}" />
+				</p:column>
+
+				<p:column headerText="Contraseña">
+					<h:outputText value="#{pe.passwordUsuario}" />
+				</p:column>
+				<p/>
+				<p:column headerText="Fecha de Nacimiento">
+					<h:outputText value="#{pe.birthDateUsuario}"> <p></p>
+						<f:convertDateTime pattern="dd-MM-yyyy" timezone="UTC" />
+					</h:outputText>
+				</p:column>
+
+				<p:column headerText="Email">
+					<h:outputText value="#{pe.emailUsuario}" />
+				</p:column>
+
+				<p:column headerText="Nombre_Empresa">
+					<h:outputText value="#{pe.companyUsuario}" />
+				</p:column>
+
+				<p:column headerText="Especialidad">
+					<h:outputText value="#{pe.specialtyUsuario}" />
+				</p:column>
+
+				<p:column headerText="Operacion">
+					<h:commandLink action="listUsuario" value="Eliminar"
+						actionListener="#{usuarioController.delete(pe)}" />
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

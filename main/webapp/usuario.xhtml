@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="content">
+		<br/>
+		<h2>Registro de Usuario</h2>
+		<h:form>
+
+			<h:outputLabel value="Id:" for="id" styleClass="control-label" />
+			<p:inputText id="id" styleClass="form-control"
+				value="#{usuarioController.u.idUsuario}"></p:inputText>
+
+
+
+			<h:outputLabel value="Nombre: " for="nombre"
+				styleClass="control-label" />
+			<p:inputText id="nombre" styleClass="form-control"
+				value="#{usuarioController.u.fullNameUsuario}"></p:inputText>
+				
+			<h:outputLabel value="Contraseña: " for="contraseña"
+				styleClass="control-label" />
+			<p:inputText id="contraseña" styleClass="form-control" type="password"
+				value="#{usuarioController.u.passwordUsuario}"></p:inputText>
+
+			<h:outputLabel value="Fecha de nacimiento " for="fecha"
+				styleClass="control-label" />
+			<p:calendar id="fecha" pattern="dd/MM/yyyy"
+				value="#{usuarioController.u.birthDateUsuario}" showOn="button"
+				timeZone="America/Mexico_City"></p:calendar>
+
+			<br />
+			<h:outputLabel value="Email:" for="email" styleClass="control-label" />
+			<p:inputText id="email" styleClass="form-control"
+				value="#{usuarioController.u.emailUsuario}"></p:inputText>
+
+
+			<h:outputLabel value="Empresa" for="empresa"
+				styleClass="control-label" />
+			<p:inputText id="empresa" styleClass="form-control"
+				value="#{usuarioController.u.companyUsuario}"></p:inputText>
+
+			<h:outputLabel value="Especialidad" for="especialidad"
+				styleClass="control-label" />
+			<p:inputText id="especialidad" styleClass="form-control"
+				value="#{usuarioController.u.specialtyUsuario}"></p:inputText>
+
+			<p:commandButton value="Grabar"
+				actionListener="#{usuarioController.insert()}"
+				action="listUsuario?faces-redirect=true" update="@form"></p:commandButton>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

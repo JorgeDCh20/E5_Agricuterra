@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="content">
+		<h2>Lista de proyecciones</h2>
+
+		<h:form>
+			<div class="row">
+				<div class="col-sm-4">
+					<h:outputLabel value="Ingrese id análisis a buscar:"
+						for="idanalisis" styleClass="control-label" />
+					<p:selectOneMenu id="idanalisis"
+				value="#{proyeccionController.y.analisis}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{proyeccionController.listaAnalisis}"
+					var="u" itemLabel="#{u.idAnalisis}" itemValue="#{u}" />
+			</p:selectOneMenu>
+					<p:commandButton value="Buscar" update="lstDetalles"
+						actionListener="#{proyeccionController.findByNameDetalle()}" />
+				</div>
+			</div>
+
+			<p:dataTable id="lstDetalles" var="ld"
+				value="#{proyeccionController.listaProyeccion}" paginator="true"
+				paginatorPosition="top" rowsPerPageTemplate="5,10,15,20,25"
+				rows="10" emptyMessage="No existen registros" rowIndexVar="item">
+
+				<p:column headerText="Id">
+					<h:outputText value="#{ld.idProyeccion}" />
+				</p:column>
+
+				<p:column headerText="Analisis">
+					<h:outputText value="#{ld.analisis.idAnalisis}" />
+				</p:column>
+
+				<p:column headerText="Fecha de proyección futura">
+					<h:outputText value="#{ld.DFutura}">
+						<p></p>
+						<f:convertDateTime pattern="dd-MM-yyyy" timezone="UTC" />
+					</h:outputText>
+				</p:column>
+
+
+				<p:column headerText="Operación">
+					<h:commandLink action="#{proyeccionController.preUpdate(ld)}"
+						value="Modificar" />
+				</p:column>
+
+				<p:column headerText="Operacion">
+					<h:commandLink action="listProyeccion" value="Eliminar"
+						actionListener="#{proyeccionController.delete(ld)}" />
+				</p:column>
+
+			</p:dataTable>
+
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+</html>

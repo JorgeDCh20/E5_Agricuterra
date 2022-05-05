@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+	<ui:define name="content">
+		<h2>Lista de sembrios</h2>
+		<h:form>
+			<p:dataTable id="listSembrios"
+				value="#{sembrioController.listaSembrios}" var="se" paginator="true"
+				paginatorPosition="top" rowsPerPageTemplate="5,10,15,20,25" rows="5"
+				rowIndexVar="item" emptyMessage="No existen personas registradas">
+
+				<p:column headerText="Id">
+					<h:outputText value="#{se.idSembrio}" />
+				</p:column>
+
+				<p:column headerText="Sembrio">
+					<h:outputText value="#{se.NSembrio}" />
+				</p:column>
+
+				<p:column headerText="QTIdeal">
+					<h:outputText value="#{se.QTIdeal}"/>
+				</p:column>
+
+				<p:column headerText="QPhIdeal">
+					<h:outputText value="#{se.QPhIdeal}" />
+				</p:column>
+
+				<p:column headerText="QHumedadI">
+					<h:outputText value="#{se.QHumedadI}" />
+				</p:column>
+
+				<p:column headerText="Operacion">
+					<h:commandLink action="listSembrio" value="Eliminar"
+						actionListener="#{sembrioController.delete(se)}" />
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
