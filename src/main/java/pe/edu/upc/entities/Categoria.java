@@ -1,4 +1,6 @@
 package pe.edu.upc.entities;
+import java.util.Objects;
+
 //util habia aqui
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -43,6 +45,23 @@ public class Categoria {
 
 	public void setFullNameCategoria(String fullNameCategoria) {
 		this.fullNameCategoria = fullNameCategoria;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(fullNameCategoria, idCategoria);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Categoria other = (Categoria) obj;
+		return Objects.equals(fullNameCategoria, other.fullNameCategoria) && idCategoria == other.idCategoria;
 	}
 
 }
