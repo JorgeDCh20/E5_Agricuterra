@@ -11,6 +11,12 @@
 		<class>pe.edu.upc.entities.TipoFactor</class>
 		<class>pe.edu.upc.entities.Tipo</class>
 		<class>pe.edu.upc.entities.Categoria</class>
+		<class>pe.edu.upc.entities.Factor</class>
+		<class>pe.edu.upc.entities.Analisis</class>
+		<class>pe.edu.upc.entities.DetalleAnalisis</class>
+		<class>pe.edu.upc.entities.Proyeccion</class>
+		<class>pe.edu.upc.entities.Recomendacion</class>
+		<class>pe.edu.upc.entities.RecoUsuario</class>
 		<properties>
 			<property
 				name="javax.persistence.schema-generation.database.action"
