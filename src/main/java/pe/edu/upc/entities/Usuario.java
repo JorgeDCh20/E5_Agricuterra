@@ -1,6 +1,7 @@
 package pe.edu.upc.entities;
 
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -106,5 +107,30 @@ public class Usuario {
 	public void setEmailUsuario(String emailUsuario) {
 		this.emailUsuario = emailUsuario;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(birthDateUsuario, companyUsuario, emailUsuario, fullNameUsuario, idUsuario, passwordUsuario,
+				specialtyUsuario);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		return Objects.equals(birthDateUsuario, other.birthDateUsuario)
+				&& Objects.equals(companyUsuario, other.companyUsuario)
+				&& Objects.equals(emailUsuario, other.emailUsuario)
+				&& Objects.equals(fullNameUsuario, other.fullNameUsuario) && idUsuario == other.idUsuario
+				&& Objects.equals(passwordUsuario, other.passwordUsuario)
+				&& Objects.equals(specialtyUsuario, other.specialtyUsuario);
+	}
+	
+	
 	
 }
