@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+	<ui:define name="content">
+		<h2>Lista vacunaciones</h2>
+		<h:form>
+			<p:dataTable id="lstRecoUsuario"
+				value="#{recoUsuarioController.listaRecoUsuario}" var="ru"
+				paginator="true" paginatorPosition="top"
+				rowsPerPageTemplate="5,10,15,20,25" rows="5"
+				emptyMessage="No hay vacunaciones registradas" rowIndexVar="item">
+
+
+				<p:column headerText="Id">
+
+					<h:outputText value="#{ru.idRecoUsuario}" />
+
+				</p:column>
+
+
+				<p:column headerText="Usuario">
+
+					<h:outputText value="#{ru.usuario.fullNameUsuario}" />
+
+				</p:column>
+
+
+				<p:column headerText="Recomendacion">
+
+					<h:outputText value="#{ru.recomendacion.NRecomendacion}" />
+
+				</p:column>
+
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="content">
+		<br></br>
+
+		<h2>Lista de Factores</h2>
+
+		<h:form>
+
+			<p:dataTable id="lstFactores"
+				value="#{factorController.listaFactores}" var="f" paginator="true"
+				paginatorPosition="top" rowPerPageTemplate="5,10,15,20,25" rows="5"
+				rowIndexVar="item" emptyMessage="No existen Usuarios">
+
+				<p:column headerText="Id">
+					<h:outputText value="#{f.idFactor}" />
+				</p:column>
+
+				<p:column headerText="TipoFactor">
+					<h:outputText value="#{f.tipofactor.NTipoFactor}" />
+				</p:column>
+
+				<p:column headerText="Precipitación">
+					<h:outputText value="#{f.QPrecipitacion}" />
+				</p:column>
+
+				<p:column headerText="Humedad">
+					<h:outputText value="#{f.QHumedad}" />
+				</p:column>
+
+				<p:column headerText="Temperatura">
+					<h:outputText value="#{f.QTemperatura}" />
+				</p:column>
+
+				<p:column headerText="Fosfato">
+					<h:outputText value="#{f.QFosfato}" />
+				</p:column>
+
+				<p:column headerText="Nitrato">
+					<h:outputText value="#{f.QNitrato}" />
+				</p:column>
+
+				<p:column headerText="Sulfato">
+					<h:outputText value="#{f.QSulfato}" />
+				</p:column>
+
+				<p:column headerText="pH">
+					<h:outputText value="#{f.QPh}" />
+				</p:column>
+
+				<p:column headerText="Operación">
+					<h:commandLink action="#{factorController.preUpdate(f)}"
+						value="Modificar" />
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

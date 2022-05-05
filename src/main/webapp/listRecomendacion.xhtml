@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+	<ui:define name="content">
+		<h2>Lista Recomendacion</h2>
+		<h:form>
+			<p:dataTable id="lstRecomendacion"
+				value="#{recomendacionController.listaRecomendacion}" var="re"
+				paginator="true" paginatorPosition="top"
+				rowPerPageTemplate="5,10,15,20,25" rows="5" rowIndexVar="item"
+				emptyMessage="No existen ">
+
+
+				<p:column headerText="Id">
+					<h:outputText value="#{re.idRecomendacion}" />
+				</p:column>
+
+				<p:column headerText="Recomendacion">
+					<h:outputText value="#{re.NRecomendacion}" />
+				</p:column>
+				
+				<p:column headerText="TipoRecomendacion">
+					<h:outputText value="#{re.tipoReco.nameTipo}" />
+				</p:column>
+
+				<p:column headerText="Operacion">
+					<h:commandLink action="listRecomendacion" value="Eliminar"
+						actionListener="#{recomendacionController.delete(re)}" />
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+
+	</ui:define>
+
+
+
+</ui:composition>
+</html>

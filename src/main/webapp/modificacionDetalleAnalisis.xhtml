@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="content">
+
+		<h2>Modificacion de vacunación</h2>
+
+		<h:form>
+			<h:outputLabel value="Código de vacunación" for="id"
+				styleClass="control-label" />
+			<p:inputText id="id"
+				value="#{vaccinationController.va.idVaccination}"
+				styleClass="form-control" required="true" />
+			<br />
+			<h:outputLabel value="Persona" for="cboPersona"
+				styleClass="Control-label" />
+			<p:selectOneMenu id="cboPersona"
+				value="#{vaccinationController.va.person}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{vaccinationController.listaPersonas}"
+					var="p" itemLabel="#{p.fullNamePerson}" itemvalue="#{p}" />
+			</p:selectOneMenu>
+			<br />
+			<h:outputLabel value="Vacuna" for="cboVacuna"
+				styleClass="Control-label" />
+			<p:selectOneMenu id="cboVacuna"
+				value="#{vaccinationController.va.vaccine}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{vaccinationController.listaVacunas}" var="v"
+					itemLabel="#{v.descriptionVaccine}" itemvalue="#{v}" />
+			</p:selectOneMenu>
+			<br />
+			<h:outputLabel value="Fecha de Aplicacion" for="fecha"
+				styleClass="Control-label" />
+			<p:calendar id="fecha" pattern="dd/MM/yyyy"
+				value="#{vaccinationController.va.vaccinationDate}" showOn="button"
+				timezone="America/Mexcio_City" required="true"></p:calendar>
+			<br />
+			<h:outputLabel value="Numero de dosis" for="cboDosis"
+				styleClass="Control-label" />
+
+			<p:selectOneMenu id="cboDosis"
+				value="#{vaccinationController.va.numberOfDoses}">
+				<f:selectItem itemLabel="1ra dosis" itemValue="1" />
+				<f:selectItem itemLabel="2ra dosis" itemValue="2" />
+				<f:selectItem itemLabel="3ra dosis" itemValue="3" />
+				<f:selectItem itemLabel="4ra dosis" itemValue="4" />
+			</p:selectOneMenu>
+			<br />
+			<p:commandButton value="Modificar"
+				actionListener="#{vaccinationController.update()}"
+				action="listVaccination?faces-redirect=true" update="@form"
+				styleclass="btn btn-primary" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+      
+
+	<ui:composition template="master.xhtml">
+	<ui:define name="content">
+		<h2>Modificación de análisis</h2>
+		<h:form>
+			<h:outputLabel value="código de analisis" for="id"
+				styclass="control-label" />
+			<p:inputText id="id"
+				value="#{analisisController.an.idAnalisis}"
+				styleClass="form-control" required="true" />
+
+			<h:outputLabel value="Sembrio" for="cbosembrio"
+				styclass="control-label" />
+			<p:selectOneMenu id="cbosembrio"
+				value="#{analisisController.an.sembrio}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{analisisController.listaSembrios}"
+					var="s" itemLabel="#{s.NSembrio}" itemValue="#{s}" />
+			</p:selectOneMenu>
+			<br/>
+			
+		<h:outputLabel value="Usuario" for="cbousuario"
+				styclass="control-label" />
+			<p:selectOneMenu id="cbousuario"
+				value="#{analisisController.an.usuario}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{analisisController.listaUsuarios}"
+					var="u" itemLabel="#{u.fullNameUsuario}" itemValue="#{u}" />
+			</p:selectOneMenu>
+			<br/>
+			
+			<h:outputLabel value="Factor" for="cbofactor"
+				styclass="control-label" />
+			<p:selectOneMenu id="cbofactor"
+				value="#{analisisController.an.factor}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{analisisController.listaFactores}"
+					var="f" itemLabel="#{f.idFactor}" itemValue="#{f}" />
+			</p:selectOneMenu>
+			<br/>
+			
+			<h:outputLabel value="Descripción del análisis:" for="TAnalisis"
+				styleClass="control-label" />
+			<p:inputText id="TAnalisis" styleClass="form-control"
+				value="#{analisisController.an.TAnalisis}"></p:inputText>
+			
+			<p:commandButton value="Actualizar"
+				actionListener="#{analisisController.update()}"
+				action="listAnalisis?faces-redirect=true" update="@form" styleClass="btn btn-primary" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

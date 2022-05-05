@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+	<ui:define name="content">
+
+		<h2>Registro de Recomendacion</h2>
+		<h:form>
+
+			<h:outputLabel value="Id:" for="id" styleClass="control-label" />
+			<p:inputText id="id" styleClass="form-control"
+				value="#{recomendacionController.r.idRecomendacion}"></p:inputText>
+
+
+
+			<h:outputLabel value="Nombre: " for="nombre"
+				styleClass="control-label" />
+			<p:inputText id="nombre" styleClass="form-control"
+				value="#{recomendacionController.r.NRecomendacion}"></p:inputText>
+
+			<br />
+
+			<h:outputLabel value="Tipo de Recomendacion"
+				for="cboTipoRecomendacion" styleClass="control-label" />
+
+			<p:selectOneMenu id="cboTipoRecomendacion"
+				value="#{recomendacionController.r.tipoReco}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{recomendacionController.listaTipoRecomendaciones}"
+					var="tr" itemLabel="#{tr.nameTipo}" itemValue="#{tr}" />
+			</p:selectOneMenu>
+			
+			
+			<p:commandButton value="Grabar"
+				actionListener="#{recomendacionController.insert()}"
+				action="listRecomendacion?faces-redirect=true" update="@form"></p:commandButton>
+		</h:form>
+	</ui:define>
+
+
+
+
+
+
+
+
+</ui:composition>
+</html>
