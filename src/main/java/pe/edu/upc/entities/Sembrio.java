@@ -1,5 +1,7 @@
 package pe.edu.upc.entities;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -77,6 +79,25 @@ public class Sembrio {
 
 	public void setQHumedadI(String QHumedadI) {
 		this.QHumedadI = QHumedadI;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(NSembrio, QHumedadI, QPhIdeal, QTIdeal, idSembrio);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Sembrio other = (Sembrio) obj;
+		return Objects.equals(NSembrio, other.NSembrio) && Objects.equals(QHumedadI, other.QHumedadI)
+				&& Objects.equals(QPhIdeal, other.QPhIdeal) && Objects.equals(QTIdeal, other.QTIdeal)
+				&& idSembrio == other.idSembrio;
 	}
 	
 

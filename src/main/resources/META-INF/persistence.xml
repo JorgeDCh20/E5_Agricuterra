@@ -7,6 +7,13 @@
 		transaction-type="JTA">
 		<jta-data-source>java:/PostgresDS</jta-data-source>
 		<class>pe.edu.upc.entities.Categoria</class>
+		<class>pe.edu.upc.entities.Factor</class>
+		<class>pe.edu.upc.entities.Sembrio</class>
+		<class>pe.edu.upc.entities.Tipo</class>
+		<class>pe.edu.upc.entities.TipoFactor</class>
+		<class>pe.edu.upc.entities.Usuario</class>
+		<class>pe.edu.upc.entities.Proyeccion</class>
+		<class>pe.edu.upc.entities.Recomendacion</class>
 		<properties>
 			<property
 				name="javax.persistence.schema-generation.database.action"

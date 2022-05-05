@@ -1,6 +1,8 @@
 package pe.edu.upc.entities;
 
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -46,5 +48,24 @@ public class Tipo {
 		this.nameTipo = nameTipo;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(idTipo, nameTipo);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Tipo other = (Tipo) obj;
+		return idTipo == other.idTipo && Objects.equals(nameTipo, other.nameTipo);
+	}
+
+	
+	
 	
 }
