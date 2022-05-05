@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="content">
+
+		<h2>Registro de factores</h2>
+
+		<h:form>
+			<h:outputLabel value="Código de factor" for="id"
+				styleClass="control-label" />
+			<p:inputText id="id" value="#{factorController.f.idFactor}"
+				styleClass="form-control" required="true" />
+				
+			<br />
+
+			<h:outputLabel value="Tipo de factor" for="cboTipoFactor"
+				styleClass="control-label" />
+			
+			<p:selectOneMenu id="cboTipoFactor"
+				value="#{factorController.f.tipofactor}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{factorController.listaTipoFactores}" var="t"
+					itemLabel="#{t.NTipoFactor}" itemValue="#{t}" />
+
+			</p:selectOneMenu>
+			<br />
+
+			<h:outputLabel value="Valor de precipitación: " for="precipitacion"
+				styleClass="control-label" />
+			<p:inputText id="precipitacion" styleClass="form-control"
+				value="#{factorController.f.QPrecipitacion}"></p:inputText>
+
+			<h:outputLabel value="Valor de humedad: " for="humedad"
+				styleClass="control-label" />
+			<p:inputText id="humedad" styleClass="form-control"
+				value="#{factorController.f.QHumedad}"></p:inputText>
+
+			<br />
+
+			<h:outputLabel value="Valor de temperatura: " for="temperatura"
+				styleClass="control-label" />
+			<p:inputText id="temperatura" styleClass="form-control"
+				value="#{factorController.f.QTemperatura}"></p:inputText>
+
+			<h:outputLabel value="Valor de fosfato: " for="fosfato"
+				styleClass="control-label" />
+			<p:inputText id="fosfato" styleClass="form-control"
+				value="#{factorController.f.QFosfato}"></p:inputText>
+
+			<br />
+
+			<h:outputLabel value="Valor de nitrato: " for="nitrato"
+				styleClass="control-label" />
+			<p:inputText id="nitrato" styleClass="form-control"
+				value="#{factorController.f.QNitrato}"></p:inputText>
+
+			<h:outputLabel value="Valor de sulfato: " for="sulfato"
+				styleClass="control-label" />
+			<p:inputText id="sulfato" styleClass="form-control"
+				value="#{factorController.f.QSulfato}"></p:inputText>
+
+			<br />
+
+			<h:outputLabel value="Valor de ph: " for="ph"
+				styleClass="control-label" />
+			<p:inputText id="ph" styleClass="form-control"
+				value="#{factorController.f.QPh}"></p:inputText>
+
+			<p:commandButton value="Grabar"
+				actionListener="#{factorController.insert()}"
+				action="listFactor?faces-redirect=true" update="@form"
+				styleClass="btn btn-primary" />
+
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+</html>
