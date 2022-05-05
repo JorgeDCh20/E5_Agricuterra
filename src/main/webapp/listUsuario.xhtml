@@ -7,7 +7,7 @@
 
 <ui:composition template="/master.xhtml">
 	<ui:define name="content">
-	<br></br>
+		<br></br>
 		<h2>Lista Usuario</h2>
 		<h:form>
 			<p:dataTable id="lstUsuarios"
@@ -19,17 +19,24 @@
 				<p:column headerText="Id">
 					<h:outputText value="#{pe.idUsuario}" />
 				</p:column>
-
+				<p:column headerText="categoria">
+					<h:outputText value="#{pe.categoria.fullNameCategoria}" />
+				</p:column>
+				
 				<p:column headerText="Usuario">
 					<h:outputText value="#{pe.fullNameUsuario}" />
+				</p:column>
+				<p:column headerText="Nombre de usuario">
+					<h:outputText value="#{pe.nombreUsuario}" />
 				</p:column>
 
 				<p:column headerText="Contraseña">
 					<h:outputText value="#{pe.passwordUsuario}" />
 				</p:column>
-				<p/>
+				<p />
 				<p:column headerText="Fecha de Nacimiento">
-					<h:outputText value="#{pe.birthDateUsuario}"> <p></p>
+					<h:outputText value="#{pe.birthDateUsuario}">
+						<p></p>
 						<f:convertDateTime pattern="dd-MM-yyyy" timezone="UTC" />
 					</h:outputText>
 				</p:column>

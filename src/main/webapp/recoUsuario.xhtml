@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="content">
+
+		<h2>Asignacion de recomendaciones</h2>
+
+		<h:form>
+			<h:outputLabel value="Código de Recousuario" for="id"
+				styleClass="control-label" />
+			<p:inputText id="id"
+				value="#{recoUsuarioController.ru.idRecoUsuario}"
+				styleClass="form-control" required="true" />
+			<br />
+			<h:outputLabel value="Usuario" for="cboUsuario"
+				styleClass="Control-label" />
+			<p:selectOneMenu id="cboUsuario"
+				value="#{recoUsuarioController.ru.usuario}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{recoUsuarioController.listaUsuarios}"
+					var="u" itemLabel="#{u.fullNameUsuario}" itemvalue="#{u}" />
+			</p:selectOneMenu>
+			<br />
+			<h:outputLabel value="Recomendacion" for="cboRecomendacion"
+				styleClass="Control-label" />
+			<p:selectOneMenu id="cboRecomendacion"
+				value="#{recoUsuarioController.ru.recomendacion}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{recoUsuarioController.listaRecomendaciones}" var="r"
+					itemLabel="#{r.NRecomendacion}" itemvalue="#{r}" />
+			</p:selectOneMenu>
+			<br />
+			
+			<p:commandButton value="Grabar"
+				actionListener="#{recoUsuarioController.insert()}"
+				action="listRecoUsuario?faces-redirect=true" update="@form"
+				styleclass="btn btn-primary" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

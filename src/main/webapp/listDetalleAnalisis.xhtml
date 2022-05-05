@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+	<ui:define name="content">
+		<h2>Lista vacunaciones</h2>
+		<h:form>
+			<p:dataTable id="lstVacunaciones"
+				value="#{vaccinationController.listaVacunaciones}" var="vacs"
+				paginator="true" paginatorPosition="top"
+				rowsPerPageTemplate="5,10,15,20,25" rows="5"
+				emptyMessage="No hay vacunaciones registradas" rowIndexVar="item">
+
+
+				<p:column headerText="Id">
+
+					<h:outputText value="#{vacs.idVaccination}" />
+
+				</p:column>
+
+
+				<p:column headerText="Persona">
+
+					<h:outputText value="#{vacs.person.fullNamePerson}" />
+
+				</p:column>
+
+
+				<p:column headerText="Vacuna">
+
+					<h:outputText value="#{vacs.vaccine.descriptionVaccine}" />
+
+				</p:column>
+
+
+				<p:column headerText="Fecha de vacunación">
+
+					<h:outputText value="#{vacs.vaccinationDate}">
+
+						<f:convertDateTime pattern="dd-MM-yyyy" timeZone="UTC" />
+
+					</h:outputText>
+
+				</p:column>
+
+
+				<p:column headerText="N° Dosis">
+
+					<h:outputText value="#{vacs.numberOfDoses}" />
+				</p:column>
+
+				<p:column headerText="Operacion">
+
+					<h:commandLink action="#{vaccinationController.preUpdate(vacs)}"
+						value="Modificar" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

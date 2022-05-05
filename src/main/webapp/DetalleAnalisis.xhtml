@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="content">
+
+		<h2>detalle analisis</h2>
+
+		<h:form>
+			<h:outputLabel value="Código detalle analisis" for="id"
+				styleClass="control-label" />
+			<p:inputText id="id"
+				value="#{detalleAnalisisController.da.idDetalleAnalisis}"
+				styleClass="form-control" required="true" />
+			<br />
+			<h:outputLabel value="Factor" for="cboFactor"
+				styleClass="Control-label" />	
+			<p:selectOneMenu id="cboFactor"
+				value="#{detalleAnalisisController.da.factor}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{detalleAnalisisController.listaFactor}"
+					var="f" itemLabel="#{f.idFactor}" itemvalue="#{f}" />
+			</p:selectOneMenu>
+			<br />
+			<h:outputLabel value="Analisis" for="cboAnalisis"
+				styleClass="Control-label" />
+			<p:selectOneMenu id="cboAnalisis"
+				value="#{detalleAnalisisController.da.analisis}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{detalleAnalisisController.listaAnalisis}"
+					var="an" itemLabel="#{an.idAnalisis}" itemvalue="#{an}" />
+			</p:selectOneMenu>
+			<br />
+			<h:outputLabel value="Fecha de analisis" for="fecha"
+				styleClass="Control-label" />
+			<p:calendar id="fecha" pattern="dd/MM/yyyy"
+				value="#{detalleAnalisisController.da.dateAnalisis}" showOn="button"
+				timezone="America/Mexcio_City" required="true"></p:calendar>
+			<br />
+			<p:commandButton value="Grabar"
+				actionListener="#{vaccinationController.insert()}"
+				action="detalleAnalisis?faces-redirect=true" update="@form"
+				styleclass="btn btn-primary" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+	<ui:define name="content">
+		<h2>Lista de Análisis</h2>
+		<h:form>
+			<p:dataTable id="lstAnalisis"
+				value="#{analisisController.listaAnalisis}" var="an"
+				paginator="true" paginatorPosition="top"
+				rowsPerPageTemplate="5,10,15,20,25" rows="10"
+				emptyMessage="No existen analisis registradas"
+				rowIndexVar="item">
+
+				<p:column headerText="Id">
+					<h:outputText value="#{an.idAnalisis}" />
+				</p:column>
+				<p:column headerText="Sembrio">
+					<h:outputText value="#{an.sembrio.NSembrio}" />
+				</p:column>
+				<p:column headerText="Usuario">
+					<h:outputText value="#{an.usuario.fullNameUsuario}" />
+				</p:column>
+								
+					<p:column headerText="Factor">
+					<h:outputText value="#{an.factor.idFactor}">
+					</h:outputText>
+				</p:column>
+				
+					<p:column headerText="Descripción de análisis">
+					<h:outputText value="#{an.TAnalisis}">
+					</h:outputText>
+				</p:column>
+				<p:column headerText="Operación">
+					<h:commandLink action="#{analisisController.preUpdate(an)}" value="Modificar" />
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+	<ui:define name="footerCont">
+	</ui:define>
+</ui:composition>
+</html>

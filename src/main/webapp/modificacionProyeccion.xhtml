@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="content">
+		<br />
+		<h2>Modificación de Proyeccion</h2>
+		<h:form>
+
+			<h:outputLabel value="Id:" for="id" styleClass="control-label" />
+			<p:inputText id="id" styleClass="form-control"
+				value="#{proyeccionController.y.idProyeccion}"></p:inputText>
+
+			<h:outputLabel value="Analisis" for="cboanalisis"
+				styclass="control-label" />
+			<p:selectOneMenu id="cboanalisis"
+				value="#{proyeccionController.y.analisis}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{proyeccionController.listaAnalisis}"
+					var="u" itemLabel="#{u.idAnalisis}" itemValue="#{u}" />
+			</p:selectOneMenu>
+			<br/>
+			
+			<h:outputLabel value="Fecha futura proyección futura: " for="fecha"
+				styleClass="control-label" />
+			<p:calendar id="fecha" pattern="dd/MM/yyyy"
+				value="#{proyeccionController.y.DFutura}" showOn="button"
+				timeZone="America/Mexico_City"></p:calendar>
+			<br />
+			
+			<p:commandButton value="Actualizar"
+				actionListener="#{proyeccionController.update()}"
+				action="listProyeccion?faces-redirect=true" update="@form"></p:commandButton>
+
+
+
+
+		</h:form>
+
+
+	</ui:define>
+
+</ui:composition>
+</html>
